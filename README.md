@@ -11,19 +11,32 @@ maze.py script
 
 ### Basic
 ```python3 maze.py```
+
 Uses default values below.
 
 Input file: ```maze.txt``` 
 
 Output file: ```maze-solved.txt```
 
-Move limit: ```5000```
+Move limit: ```5_000```
 
-### Specify input and output file
-```python3 maze.py maze.txt maze-solved.txt```
+### Specify Input and Output File
+```
+python3 maze.py [input_file] [output_file]
+```
+Example:
+```
+python3 maze.py maze.txt maze-solved.txt
+```
 
-### Specify input file, output file and move limit
-```python3 maze.py maze.txt maze-solved.txt 10_000```
+### Specify Input File, Output File and Move Limit
+```
+python3 maze.py [input_file] [output_file] [move_limit]
+```
+Example:
+```
+python3 maze.py maze.txt maze-solved.txt 10_000
+```
 
 ## Input and Output Data
 **#**: Wall
