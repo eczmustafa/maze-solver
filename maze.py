@@ -97,7 +97,7 @@ class maze:
         if (
             not point.index == -1 and not point.index == 0
         ):  # hedef veya başlangıç nodun kendisi değilse
-            self.nodesPuzzle[point.y][point.x] = str((point.cost-1) % 10)  # "."
+            self.nodesPuzzle[point.y][point.x] = str((point.cost - 1) % 10)  # "."
         if point.prevIndex == 0:  # başlangıç noda geldi
             # labirentteki X ve O'ları temizle
             for i in range(len(self.nodesPuzzle)):
@@ -137,7 +137,7 @@ def main():
         inputFile, outputFile = (*sys.argv[1:],)
     elif len(sys.argv) == 4:
         inputFile, outputFile, m.limitMove = (*sys.argv[1:],)
-        m.limitMove=int(m.limitMove)
+        m.limitMove = int(m.limitMove)
     else:
         print("Valid usages:")
         print("maze.py")
