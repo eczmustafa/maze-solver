@@ -14,7 +14,9 @@ maze.py script
 Uses default values below.
 
 Input file: ```maze.txt``` 
+
 Output file: ```maze-solved.txt```
+
 Move limit: ```5000```
 
 ### Specify input and output file
