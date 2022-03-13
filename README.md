@@ -30,15 +30,15 @@ Move limit: ```5000```
 
 **T**: Target point
 
-*numbers*: Solution path. Follow repeating cycle of numbers: [0-9]
+*spaces*: Spaces.
 
-*spaces*: Spaces
+*numbers*: Solution path. Repeating cycle of numbers: [0-9].
 
-*dots*: Calculated but neglected points
+*dots*: Calculated but neglected points.
 
-**X**: Blocked point. Cannot move forward.
+**X**: Blocked point. Cannot move forward. Turns into dot after solution.
 
-**O**: Prepending point. Waiting to be calculated.
+**O**: Prepending point. Waiting to be calculated. Turns into dot after solution.
 
 ### Sample Input File
 ```
