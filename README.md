@@ -39,6 +39,9 @@ python3 maze.py maze.txt maze-solved.txt 10_000
 ```
 
 ## Input and Output Data
+
+The maze data of the input and output text files consist of these symbols.
+
 **#**: Wall
 
 **S**: Starting point
