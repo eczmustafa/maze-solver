@@ -12,7 +12,7 @@ maze.py script
 Uses default values below.
 Input file: ```maze.txt``` 
 Output file: ```maze-solved.txt```
-Move limit: ```5000
+Move limit: ```5000```
 
 ### Specift input and output file:
 ```python3 maze.py maze.txt maze-solved.txt```
