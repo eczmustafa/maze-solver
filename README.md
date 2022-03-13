@@ -10,6 +10,7 @@ maze.py script
 ### Basic:
 ```python3 maze.py```
 Uses default values below.
+
 Input file: ```maze.txt``` 
 Output file: ```maze-solved.txt```
 Move limit: ```5000```
