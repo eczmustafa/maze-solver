@@ -1,7 +1,5 @@
 import math
 from functools import reduce
-import numpy as np
-import pandas as pd
 import sys
 
 
@@ -15,9 +13,10 @@ class maze:
     waitingPoints = []
     calculatedPoints = []
     target = clsPoint()
-    limitMove = 5_000
+    limitMove = 5000
 
     def calculateDistanceToTarget(self, x1, y1, x2, y2):
+        #return 0
         a = abs(x1 - x2)
         b = abs(y1 - y2)
         return math.sqrt(a**2 + b**2)
@@ -36,22 +35,21 @@ class maze:
 
     def readStartAndTarget(self):
         nodes = self.nodesOriginal
-        # önce hedefi bul sonra, başlangıcı
-        # başlangıç eklenirken hedefe uzaklık hesaplaması için önceden hedefin bilinmesi gerekli
+        # find the target first, then starting point
         startX, startY = None, None
         for i in range(len(nodes)):
             for k in range(len(nodes[i])):
                 if nodes[i][k] == "T":
+                    # target found
                     self.target.y = i
                     self.target.x = k
-                    # son durak
                     self.target.index = -1
                     self.target.prevIndex = -1
                     self.target.cost = -1
                 if nodes[i][k] == "S":
                     startX, startY = k, i
 
-        # başlangıcı ilk durak olarak ekle
+        # add the starting point to the list
         self.addToWaitingPoints(x=startX, y=startY, cost=0, prevIndex=None)
 
     def read(self, dosya):
@@ -74,15 +72,15 @@ class maze:
         x = point.x
         y = point.y
 
-        # 4 yönü belirle
+        # find the 4 directions
         prepending = []
-        prepending.append({"y": y, "x": x - 1})  # yukarı
-        prepending.append({"y": y + 1, "x": x})  # sağ
-        prepending.append({"y": y - 1, "x": x})  # sol
-        prepending.append({"y": y, "x": x + 1})  # aşağı
+        prepending.append({"y": y, "x": x - 1})  # up
+        prepending.append({"y": y + 1, "x": x})  # right
+        prepending.append({"y": y - 1, "x": x})  # left
+        prepending.append({"y": y, "x": x + 1})  # down
 
         for d in prepending:
-            if self.nodesPuzzle[d["y"]][d["x"]] == " ":  # durak hesaplanmamış
+            if self.nodesPuzzle[d["y"]][d["x"]] == " ":  # node not calculated
                 self.addToWaitingPoints(
                     x=d["x"], y=d["y"], cost=point.cost + 1, prevIndex=point.index
                 )
@@ -96,10 +94,10 @@ class maze:
     def calculateSolutionPath(self, point: clsPoint):
         if (
             not point.index == -1 and not point.index == 0
-        ):  # hedef veya başlangıç nodun kendisi değilse
-            self.nodesPuzzle[point.y][point.x] = str((point.cost - 1) % 10)  # "."
-        if point.prevIndex == 0:  # başlangıç noda geldi
-            # labirentteki X ve O'ları temizle
+        ):  # this point is not the target or starting point
+            self.nodesPuzzle[point.y][point.x] = str((point.cost - 1) % 10)
+        if point.prevIndex == 0:  # came to the starting point
+            # clear X and O's in the maze
             for i in range(len(self.nodesPuzzle)):
                 for k in range(len(self.nodesPuzzle[i])):
                     if self.nodesPuzzle[i][k] == "X" or self.nodesPuzzle[i][k] == "O":
